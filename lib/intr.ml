@@ -2,30 +2,50 @@ open Parser
 open Printf
 open Lexer
 
-type reg_type = Temp of int | Arg of int  | Return of int
-type reg_dag = Load of reg_type * tokens
-              |Op_single_reg of reg_type * op_type * tokens 
-(*
-let rec stmt_to_dag  assign =
-    let rec expr_to_dag expr output = 
-    (match expr,output with
+type reg_type = Temp of int | Arg of int  | Return of int | Const of tokens
+
+type intr = |Load of reg_type * reg_type 
+            |Bin_Insr of reg_type * reg_type * op_type * reg_type  
+            |Call of string
+            |Label of string * intr list
+            
+let rec stmt_to_intr  assign =
+    let rec expr_to_intr expr incr = 
+    match expr with
     
+    |OP(VALUE l,v, VALUE r) ->  
+            
+        Bin_Insr(Temp(incr),Const(r),v,Const(l))::[]  
+    |OP(VALUE l,v,r) ->
+        Bin_Insr(Temp(incr),Temp(incr),v,Const(l)) 
+        :: (expr_to_intr r (incr))
+    |OP(l,v,VALUE r) ->
+        Bin_Insr(Temp(incr),Temp(incr),v,Const(r)) 
+        :: (expr_to_intr l (incr))
     |OP (l,v,r) -> 
-        let v1,v2 = expr_to_dag l (incr), expr_to_dag r (incr+1) 
-        
-    |VALUE(v) -> 
-            Val(v) 
+
+        Bin_Insr(Temp(incr),Temp(incr),v,Temp(incr+1))
+        :: (expr_to_intr l (incr)) 
+        @  (expr_to_intr r (incr+1))
+    |VALUE(v) ->
+        Load(Temp(incr),Const(v))::[]
+
     |FUNC_CALL(iden,expr_list) -> 
-        List.iteri (fun i expr -> 
-            match (expr) with 
-            |VALUE(x) -> fprintf file "\tv%i = %s\n"  i (stringify x);
-            |any-> fprintf file "\tv%i = t%i\n" i (expr_to_intr any  (incr+i));
-                
-            ) expr_list;
-            Printf.fprintf file "\tcall %s\n" iden;
+        let lst,_= List.fold_left (fun ls_i expr -> 
+            let ls,i = ls_i in
+            (match (expr) with 
+            |VALUE(x) -> Load(Arg(i),Const(x))::ls,i+1
+            |any-> ( match (expr_to_intr any  (incr+i)) with
+                |Bin_Insr(Temp(cur_i),_,_,_)  ::rest -> 
+                        ((Load(Arg(i),Temp(cur_i))):: rest @ ls),(i+1)
+                |_->[],i+1
+            )
+            )    
+        ) ([],0) expr_list  in
+        Call(iden) :: lst
 
     |ERROR -> 
-            raise (OP "failed to print") );
+            raise (OP "failed to print") 
     incr
     in
     match (assign) with 
@@ -40,7 +60,6 @@ let rec stmt_to_dag  assign =
             ; 
             List.iter  (assign_to_intr file) stmts;
             Printf.fprintf file "\treturn\n\n"
-*)
 
 
 let rec assign_to_intr file assign =
