@@ -1,0 +1,6 @@
+def f1(arg1) 
+    cow := arg1 + 1
+    cow
+
+
+dog := f1(10)

@@ -1,0 +1,167 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/jimmy/projects/programming_lang/jumplang/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+()	_build/default/bin/main.ml	/^let () = print_endline "Hello, World!"$/;"	f
+()	_build/default/lib/intr.ml	/^let () =$/;"	f
+()	bin/main.ml	/^let () = print_endline "Hello, World!"$/;"	f
+()	lib/intr.ml	/^let () =$/;"	f
+ADD	_build/default/lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+ADD	lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+ARROW	_build/default/lib/lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ARROW	lib/lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ASSIGN	_build/default/lib/lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ASSIGN	_build/default/lib/parser.ml	/^            | ASSIGN of string * expr$/;"	C	type:stmt
+ASSIGN	lib/lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ASSIGN	lib/parser.ml	/^            | ASSIGN of string * expr$/;"	C	type:stmt
+Any	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Any	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+CHAR	_build/default/lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+CHAR	lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+COMMA	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+COMMA	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+Char	_build/default/lib/lexer.ml	/^exception Char of string$/;"	e
+Char	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Char	lib/lexer.ml	/^exception Char of string$/;"	e
+Char	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+DEF	_build/default/lib/lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+DEF	lib/lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+DIV	_build/default/lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+DIV	lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+END	_build/default/lib/lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+END	lib/lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+EQ	_build/default/lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+EQ	lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+ERROR	_build/default/lib/parser.ml	/^            | ERROR$/;"	C	type:expr
+ERROR	lib/parser.ml	/^            | ERROR$/;"	C	type:expr
+FLOAT	_build/default/lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+FLOAT	lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+FUNC	_build/default/lib/parser.ml	/^type stmt = FUNC of string * string list * stmt list$/;"	C	type:stmt
+FUNC	lib/parser.ml	/^type stmt = FUNC of string * string list * stmt list$/;"	C	type:stmt
+FUNC_CALL	_build/default/lib/parser.ml	/^            | FUNC_CALL of string * expr list$/;"	C	type:expr
+FUNC_CALL	lib/parser.ml	/^            | FUNC_CALL of string * expr list$/;"	C	type:expr
+Float	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Float	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Function	_build/default/lib/parser.ml	/^                    |Function of var_type list * var_type *  symbol_entry VarMap.t $/;"	C	type:symbol_entry
+Function	lib/parser.ml	/^                    |Function of var_type list * var_type *  symbol_entry VarMap.t $/;"	C	type:symbol_entry
+GEQ	_build/default/lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+GEQ	lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+GT	_build/default/lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+GT	lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+IDEN	_build/default/lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+IDEN	lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+IF	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+IF	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+INTEGER	_build/default/lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+INTEGER	lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+Iden	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Iden	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Int	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Int	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Intr	_build/default/lib/intr.ml	/^open Parser$/;"	M
+Intr	lib/intr.ml	/^open Parser$/;"	M
+LBRAC	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LBRAC	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LEQ	_build/default/lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+LEQ	lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+LPARAM	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LPARAM	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LPIPE	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LPIPE	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LT	_build/default/lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+LT	lib/lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+Lexer	_build/default/lib/lexer.ml	/^$/;"	M
+Lexer	lib/lexer.ml	/^$/;"	M
+MINUS	_build/default/lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+MINUS	lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+MULT	_build/default/lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+MULT	lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+Main	_build/default/bin/main.ml	/^let () = print_endline "Hello, World!"$/;"	M
+Main	bin/main.ml	/^let () = print_endline "Hello, World!"$/;"	M
+NEWLINE	_build/default/lib/lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+NEWLINE	lib/lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+OP	_build/default/lib/parser.ml	/^exception OP of string$/;"	e
+OP	_build/default/lib/parser.ml	/^type expr = OP of expr * op_type * expr $/;"	C	type:expr
+OP	lib/parser.ml	/^exception OP of string$/;"	e
+OP	lib/parser.ml	/^type expr = OP of expr * op_type * expr $/;"	C	type:expr
+PLUS	_build/default/lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+PLUS	lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+Parser	_build/default/lib/parser.ml	/^$/;"	M
+Parser	lib/parser.ml	/^$/;"	M
+RBRAC	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RBRAC	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RPARAM	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RPARAM	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RPIPE	_build/default/lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RPIPE	lib/lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+SEMICOLON	_build/default/lib/lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+SEMICOLON	lib/lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+SLASH	_build/default/lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+SLASH	lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+STRING	_build/default/lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+STRING	lib/lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+SUB	_build/default/lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+SUB	lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+Str	_build/default/lib/lexer.ml	/^exception Str of string $/;"	e
+Str	lib/lexer.ml	/^exception Str of string $/;"	e
+String	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+String	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+TIMES	_build/default/lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+TIMES	lib/lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+Table	_build/default/lib/parser.ml	/^                    |Table of symbol_entry VarMap.t$/;"	C	type:symbol_entry
+Table	lib/parser.ml	/^                    |Table of symbol_entry VarMap.t$/;"	C	type:symbol_entry
+Type	_build/default/lib/parser.ml	/^                    |Type of var_type list$/;"	C	type:symbol_entry
+Type	lib/parser.ml	/^                    |Type of var_type list$/;"	C	type:symbol_entry
+VALUE	_build/default/lib/parser.ml	/^            | VALUE of tokens $/;"	C	type:expr
+VALUE	lib/parser.ml	/^            | VALUE of tokens $/;"	C	type:expr
+VarMap	_build/default/lib/parser.ml	/^module VarMap = Map.Make(String)$/;"	M
+VarMap	lib/parser.ml	/^module VarMap = Map.Make(String)$/;"	M
+Variable	_build/default/lib/parser.ml	/^                    |Variable of var_type$/;"	C	type:symbol_entry
+Variable	lib/parser.ml	/^                    |Variable of var_type$/;"	C	type:symbol_entry
+assign_to_intr	_build/default/lib/intr.ml	/^let rec assign_to_intr file assign =$/;"	f
+assign_to_intr	lib/intr.ml	/^let rec assign_to_intr file assign =$/;"	f
+decl_arg_types	_build/default/lib/parser.ml	/^            let decl_arg_types,return = get_func_call iden sym_tbl in$/;"	v
+decl_arg_types	lib/parser.ml	/^            let decl_arg_types,return = get_func_call iden sym_tbl in$/;"	v
+expr	_build/default/lib/parser.ml	/^type expr = OP of expr * op_type * expr $/;"	t
+expr	lib/parser.ml	/^type expr = OP of expr * op_type * expr $/;"	t
+extract_lexems	_build/default/lib/lexer.ml	/^let extract_lexems str_list = List.map typify str_list $/;"	f
+extract_lexems	lib/lexer.ml	/^let extract_lexems str_list = List.map typify str_list $/;"	f
+get_next_lex	_build/default/lib/lexer.ml	/^let get_next_lex ls  =$/;"	f
+get_next_lex	lib/lexer.ml	/^let get_next_lex ls  =$/;"	f
+get_raw_lexes	_build/default/lib/lexer.ml	/^let get_raw_lexes char_list = $/;"	f
+get_raw_lexes	lib/lexer.ml	/^let get_raw_lexes char_list = $/;"	f
+match_reg	_build/default/lib/lexer.ml	/^let match_reg reg str= Str.string_match (Str.regexp reg)  str 0 $/;"	f
+match_reg	lib/lexer.ml	/^let match_reg reg str= Str.string_match (Str.regexp reg)  str 0 $/;"	f
+op_type	_build/default/lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	t
+op_type	lib/parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	t
+parser_f	_build/default/lib/parser.ml	/^let parser_f terminals_list = $/;"	f
+parser_f	lib/parser.ml	/^let parser_f terminals_list = $/;"	f
+print_exp	_build/default/lib/parser.ml	/^let print_exp  exp = match exp with  $/;"	f
+print_exp	lib/parser.ml	/^let print_exp  exp = match exp with  $/;"	f
+print_token	_build/default/lib/lexer.ml	/^let print_token x =  Printf.printf "%s;\\n" (stringify x);()$/;"	f
+print_token	lib/lexer.ml	/^let print_token x =  Printf.printf "%s;\\n" (stringify x);()$/;"	f
+read_j_file	_build/default/lib/lexer.ml	/^let  read_j_file  file = $/;"	f
+read_j_file	lib/lexer.ml	/^let  read_j_file  file = $/;"	f
+stmt	_build/default/lib/parser.ml	/^type stmt = FUNC of string * string list * stmt list$/;"	t
+stmt	lib/parser.ml	/^type stmt = FUNC of string * string list * stmt list$/;"	t
+stringify	_build/default/lib/lexer.ml	/^let stringify token = $/;"	f
+stringify	lib/lexer.ml	/^let stringify token = $/;"	f
+stringify_op	_build/default/lib/parser.ml	/^let stringify_op v = (match v with $/;"	f
+stringify_op	lib/parser.ml	/^let stringify_op v = (match v with $/;"	f
+symbol_entry	_build/default/lib/parser.ml	/^type symbol_entry = $/;"	t
+symbol_entry	lib/parser.ml	/^type symbol_entry = $/;"	t
+tokens	_build/default/lib/lexer.ml	/^type tokens = $/;"	t
+tokens	lib/lexer.ml	/^type tokens = $/;"	t
+typify	_build/default/lib/lexer.ml	/^let typify str = $/;"	f
+typify	lib/lexer.ml	/^let typify str = $/;"	f
+values	_build/default/lib/intr.ml	/^let values= read_j_file "file" |> get_raw_lexes |> extract_lexems |> parser_f  $/;"	v
+values	lib/intr.ml	/^let values= read_j_file "file" |> get_raw_lexes |> extract_lexems |> parser_f  $/;"	v
+var_type	_build/default/lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	t
+var_type	lib/parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	t

@@ -1,0 +1,6 @@
+(executable
+ (public_name jumplang)
+ (name main)
+ (libraries str jumplang )
+  
+)
