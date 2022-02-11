@@ -9,7 +9,7 @@ type intr = |Load of reg_type * reg_type
             |Call of string
             |Label of string * intr list
             
-let rec stmt_to_intr  assign =
+let rec stmt_to_intr stmts =
     let rec expr_to_intr expr incr = 
     match expr with
     
@@ -46,21 +46,28 @@ let rec stmt_to_intr  assign =
 
     |ERROR -> 
             raise (OP "failed to print") 
-    incr
     in
-    match (assign) with 
-    |Parser.ASSIGN(k , v) -> 
-            let final_incr = expr_to_intr v 0 in
-            Printf.fprintf file "\t%s = t%i\n" k final_incr;
-    |FUNC(name, args , stmts,_) ->
-            Printf.fprintf file "%s:\n" name;
-            List.iteri 
-                (fun i v -> Printf.fprintf file "\t%s = v%i\n" v i) 
-                args
-            ; 
-            List.iter  (assign_to_intr file) stmts;
-            Printf.fprintf file "\treturn\n\n"
+    let rec stmt_to_intr_r stmts output =
+    match (stmts) with 
+    |Parser.ASSIGN(k , v) :: xs -> 
+        (match (expr_to_intr v 0) with  
+        |Bin_Insr(Temp(i),_,_,_)::_ as all ->
+            let value = (Load(Const(IDEN(k)),Temp(i))::all) in
+            stmt_to_intr_r xs (value @ output) 
+        |_ -> (raise (OP "wrong insr"))
+        )
+            
+    |FUNC(name, args , stmts,_)::xs ->
 
+            let args = List.mapi 
+                (fun i v -> Load(Const(IDEN(v)), Arg(i)))
+                args 
+            in
+            let intrs = stmt_to_intr stmts in
+            stmt_to_intr_r xs (Label(name,args @ intrs)::output)
+    |[] -> output
+    in
+    stmt_to_intr_r stmts []
 
 let rec assign_to_intr file assign =
     let rec expr_to_intr expr incr = 
