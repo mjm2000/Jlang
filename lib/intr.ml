@@ -9,7 +9,13 @@ type intr = |Load of reg_type * reg_type
             |Call of string
             |Label of string * intr list
             
-let rec stmt_to_intr stmts =
+let rec last_reg stmts = match stmts with
+    |Load(Temp(i),_)::_ -> Temp(i+1)
+    |Bin_Insr(Temp(i),_,_,_)::_ -> Temp(i+1)
+    |_::xs-> last_reg xs 
+    |[]-> Temp(0) 
+
+let stmt_to_intr stmts =
     let rec expr_to_intr expr incr = 
     match expr with
     
@@ -37,12 +43,14 @@ let rec stmt_to_intr stmts =
             |VALUE(x) -> Load(Arg(i),Const(x))::ls,i+1
             |any-> ( match (expr_to_intr any  (incr+i)) with
                 |Bin_Insr(Temp(cur_i),_,_,_)  ::rest -> 
-                        ((Load(Arg(i),Temp(cur_i))):: rest @ ls),(i+1)
+                    ((Load(Arg(i),Temp(cur_i))):: rest @ ls),(i+1)
                 |_->[],i+1
             )
             )    
-        ) ([],0) expr_list  in
-        Call(iden) :: lst
+        ) ([],0) expr_list in  
+        
+       Load(Temp(incr),Return(0))::Call(iden)::lst
+         
 
     |ERROR -> 
             raise (OP "failed to print") 
@@ -50,74 +58,63 @@ let rec stmt_to_intr stmts =
     let rec stmt_to_intr_r stmts output =
     match (stmts) with 
     |Parser.ASSIGN(k , v) :: xs -> 
-        (match (expr_to_intr v 0) with  
-        |Bin_Insr(Temp(i),_,_,_)::_ as all ->
-            let value = (Load(Const(IDEN(k)),Temp(i))::all) in
-            stmt_to_intr_r xs (value @ output) 
-        |_ -> (raise (OP "wrong insr"))
-        )
+        let new_output = match (expr_to_intr v 0) with  
+            |Bin_Insr(Temp(i),_,_,_)::_ as all ->
+                let value = (Load(Const(IDEN(k)),Temp(i))::all) in
+                List.rev (value) @ output
+            |all ->  all @ output 
+        in 
+        stmt_to_intr_r xs new_output 
             
-    |FUNC(name, args , stmts,_)::xs ->
+    |FUNC(name, args , stmts,return)::xs ->
+        let args = List.mapi 
+            (fun i v -> Load(Const(IDEN(v)), Arg(i)))
+            args 
+        in
 
-            let args = List.mapi 
-                (fun i v -> Load(Const(IDEN(v)), Arg(i)))
-                args 
-            in
-            let intrs = stmt_to_intr stmts in
-            stmt_to_intr_r xs (Label(name,args @ intrs)::output)
+        let stmt_insrs = stmt_to_intr_r stmts [] in
+          
+        let last_reg,expr_insrs = match (expr_to_intr return 1 ) with 
+            |Bin_Insr(x,_,_,_)::_ as rest->x, rest
+            |Load(x,_)::_ as rest ->x,rest
+            |_-> raise (OP "wrong last istr")
+        in
+        let return = Load(Return(0),last_reg) in
+        let all_intrs = args @ stmt_insrs @ expr_insrs @ [return] 
+        in
+        let func_label = Label(name,all_intrs)
+        in
+        stmt_to_intr_r xs (func_label::output)
+
     |[] -> output
     in
-    stmt_to_intr_r stmts []
+     (stmt_to_intr_r  stmts [])
 
-let rec assign_to_intr file assign =
-    let rec expr_to_intr expr incr = 
-    (match expr with
-    | OP(VALUE l,v, VALUE r) ->  
-            
 
-            fprintf file "\tt%i = %s %s %s\n" incr (stringify r) (stringify_op v) (stringify l);
-
-    |OP(VALUE l,v,r) ->
-
-            let _ = expr_to_intr r (incr) in 
-            fprintf file "\tt%i = t%i %s %s\n" incr incr (stringify_op v) (stringify l);
-    |OP(l,v,VALUE r) ->
-        
-            let _ = expr_to_intr l (incr) in 
-            fprintf file "\tt%i = t%i %s %s\n" incr incr (stringify_op v) (stringify r);
- 
-    |OP (l,v,r) -> 
-        let _ = expr_to_intr l (incr) , expr_to_intr r (incr+1) in
-        
-        fprintf file "\tt%i = t%i %s t%i\n" incr incr (stringify_op v) (incr+1);
-    |VALUE(v) -> 
-            fprintf file "\tt%i = %s\n" incr (stringify v); 
-    |FUNC_CALL(iden,expr_list) -> 
-        List.iteri (fun i expr -> 
-            match (expr) with 
-            |VALUE(x) -> fprintf file "\tv%i = %s\n"  i (stringify x);
-            |any-> fprintf file "\tv%i = t%i\n" i (expr_to_intr any  (incr+i));
-                
-            ) expr_list;
-            Printf.fprintf file "\tcall %s\n" iden;
-
-    |ERROR -> 
-            raise (OP "failed to print") );
-    incr
+let print_intrs file insts = 
+    let stringify_reg reg = match reg with
+    | Temp(x)  -> sprintf "t%i"  x 
+    | Arg (x)  -> sprintf "a%i"  x
+    | Return(x)-> sprintf "v%i"  x
+    | Const(x) -> sprintf "%s"  (stringify x)
     in
-    match (assign) with 
-    |Parser.ASSIGN(k , v) -> 
-            let final_incr = expr_to_intr v 0 in
-            Printf.fprintf file "\t%s = t%i\n" k final_incr;
-    |FUNC(name, args , stmts,_) ->
-            Printf.fprintf file "%s:\n" name;
-            List.iteri 
-                (fun i v -> Printf.fprintf file "\t%s = v%i\n" v i) 
-                args
-            ; 
-            List.iter  (assign_to_intr file) stmts;
-            Printf.fprintf file "\treturn\n\n"
-    
-
-
-
+    let rec print_intr inst = match inst with 
+        |Bin_Insr(res,l,op,r)-> 
+            fprintf file "%s = %s %s %s\n"  
+                (stringify_reg res)  
+                (stringify_reg l) 
+                (stringify_op op) 
+                (stringify_reg r);
+        |Load(res,send) ->
+            fprintf file "%s = %s\n"  
+                (stringify_reg res) 
+                (stringify_reg send);
+            
+        |Label(title,ls) ->
+            fprintf file "%s:\n" title;
+            List.iter (fun x -> fprintf file "\t"; (print_intr x)) ls;
+            fprintf file "\treturn\n";
+        |Call(x) ->
+                fprintf file "call %s\n" x;
+        in
+    List.iter print_intr insts;;
