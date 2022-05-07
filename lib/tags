@@ -1,0 +1,201 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/jimmy/projects/programming_lang/jumplang/lib/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+ADD	parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+AL	assem.ml	/^    |AL $/;"	C	type:reg
+ARROW	lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ASSIGN	lexer.ml	/^    | ARROW | ASSIGN   $/;"	C	type:tokens
+ASSIGN	parser.ml	/^            | ASSIGN of string * expr$/;"	C	type:stmt
+AX	assem.ml	/^    |AX $/;"	C	type:reg
+Any	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Arg	intr.ml	/^type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value $/;"	C	type:reg_type
+Assem	assem.ml	/^open Parser$/;"	M
+BL	assem.ml	/^    |BL $/;"	C	type:reg
+BP	assem.ml	/^    |BP $/;"	C	type:reg
+BPL	assem.ml	/^    |BPL $/;"	C	type:reg
+BX	assem.ml	/^    |BX $/;"	C	type:reg
+Bin_Insr	intr.ml	/^            |Bin_Insr of reg_type * reg_type * op_type * reg_type  $/;"	C	type:intr
+CHAR	lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+CL	assem.ml	/^    |CL $/;"	C	type:reg
+COMMA	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+CX	assem.ml	/^    |CX $/;"	C	type:reg
+Call	intr.ml	/^            |Call of string$/;"	C	type:intr
+Char	lexer.ml	/^exception Char of string$/;"	e
+Char	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Char_Val	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	C	type:expr_value
+Const	intr.ml	/^type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value $/;"	C	type:reg_type
+DEF	lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+DI	assem.ml	/^    |DI $/;"	C	type:reg
+DIL	assem.ml	/^    |DIL $/;"	C	type:reg
+DIV	parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+DL	assem.ml	/^    |DL $/;"	C	type:reg
+DX	assem.ml	/^    |DX $/;"	C	type:reg
+EAX	assem.ml	/^    |EAX $/;"	C	type:reg
+EBP	assem.ml	/^    |EBP $/;"	C	type:reg
+EBX	assem.ml	/^    |EBX $/;"	C	type:reg
+ECX	assem.ml	/^    |ECX $/;"	C	type:reg
+EDI	assem.ml	/^    |EDI $/;"	C	type:reg
+EDX	assem.ml	/^    |EDX $/;"	C	type:reg
+END	lexer.ml	/^    | DEF | END$/;"	C	type:tokens
+EQ	lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+ERROR	parser.ml	/^            | ERROR$/;"	C	type:expr
+ESI	assem.ml	/^    |ESI $/;"	C	type:reg
+ESP	assem.ml	/^    |ESP $/;"	C	type:reg
+FLOAT	lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+FUNC	parser.ml	/^type stmt = FUNC of string * string list * stmt list * expr$/;"	C	type:stmt
+FUNC_CALL	parser.ml	/^            | FUNC_CALL of string * expr list$/;"	C	type:expr
+Float	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Float_Val	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	C	type:expr_value
+Function	parser.ml	/^                    |Function of var_type list * var_type *  symbol_entry VarMap.t $/;"	C	type:symbol_entry
+GEQ	lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+GT	lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+IDEN	lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+IF	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+INTEGER	lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+Iden	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Iden_Val	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	C	type:expr_value
+Int	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+Int_Val	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	C	type:expr_value
+Intr	intr.ml	/^open Parser$/;"	M
+JMP	assem.ml	/^type jump_type = JMP $/;"	C	type:jump_type
+LBRAC	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LEQ	lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+LPARAM	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LPIPE	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+LT	lexer.ml	/^    | LEQ | GEQ | EQ | LT | GT $/;"	C	type:tokens
+Label	intr.ml	/^            |Label of string * intr list$/;"	C	type:intr
+Lexer	lexer.ml	/^$/;"	M
+Load	intr.ml	/^type intr = |Load of reg_type * reg_type $/;"	C	type:intr
+MINUS	lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+MOV	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	C	type:assem_bin_insr
+MULT	parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+NEWLINE	lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+Number	assem.ml	/^    |Number of int$/;"	C	type:reg
+OP	parser.ml	/^exception OP of string$/;"	e
+OP	parser.ml	/^type expr = OP of expr * op_type * expr $/;"	C	type:expr
+PLUS	lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+POP	assem.ml	/^type  assem_un_insr =  PUSH | POP$/;"	C	type:assem_un_insr
+PUSH	assem.ml	/^type  assem_un_insr =  PUSH | POP$/;"	C	type:assem_un_insr
+Parser	parser.ml	/^$/;"	M
+R10	assem.ml	/^    |R10 $/;"	C	type:reg
+R10B	assem.ml	/^    |R10B $/;"	C	type:reg
+R10D	assem.ml	/^    |R10D $/;"	C	type:reg
+R10W	assem.ml	/^    |R10W $/;"	C	type:reg
+R11	assem.ml	/^    |R11 $/;"	C	type:reg
+R11B	assem.ml	/^    |R11B $/;"	C	type:reg
+R11D	assem.ml	/^    |R11D $/;"	C	type:reg
+R11W	assem.ml	/^    |R11W $/;"	C	type:reg
+R12	assem.ml	/^    |R12 $/;"	C	type:reg
+R12B	assem.ml	/^    |R12B $/;"	C	type:reg
+R12D	assem.ml	/^    |R12D $/;"	C	type:reg
+R12W	assem.ml	/^    |R12W $/;"	C	type:reg
+R13	assem.ml	/^    |R13 $/;"	C	type:reg
+R13B	assem.ml	/^    |R13B $/;"	C	type:reg
+R13D	assem.ml	/^    |R13D $/;"	C	type:reg
+R13W	assem.ml	/^    |R13W $/;"	C	type:reg
+R14	assem.ml	/^    |R14 $/;"	C	type:reg
+R14B	assem.ml	/^    |R14B $/;"	C	type:reg
+R14D	assem.ml	/^    |R14D $/;"	C	type:reg
+R14W	assem.ml	/^    |R14W $/;"	C	type:reg
+R15	assem.ml	/^    |R15 $/;"	C	type:reg
+R15B	assem.ml	/^    |R15B $/;"	C	type:reg
+R15D	assem.ml	/^    |R15D $/;"	C	type:reg
+R15W	assem.ml	/^    |R15W $/;"	C	type:reg
+R8	assem.ml	/^    |R8 $/;"	C	type:reg
+R8B	assem.ml	/^    |R8B $/;"	C	type:reg
+R8D	assem.ml	/^    |R8D $/;"	C	type:reg
+R8W	assem.ml	/^    |R8W $/;"	C	type:reg
+R9	assem.ml	/^    |R9 $/;"	C	type:reg
+R9B	assem.ml	/^    |R9B $/;"	C	type:reg
+R9D	assem.ml	/^    |R9D $/;"	C	type:reg
+R9W	assem.ml	/^    |R9W $/;"	C	type:reg
+RAX	assem.ml	/^    |RAX $/;"	C	type:reg
+RBP	assem.ml	/^    |RBP of int$/;"	C	type:reg
+RBRAC	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RBX	assem.ml	/^    |RBX $/;"	C	type:reg
+RCX	assem.ml	/^    |RCX $/;"	C	type:reg
+RDI	assem.ml	/^    |RDI $/;"	C	type:reg
+RDX	assem.ml	/^    |RDX $/;"	C	type:reg
+RPARAM	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RPIPE	lexer.ml	/^    | IF  | LPARAM | RPARAM | COMMA | LBRAC | RBRAC  | RPIPE | LPIPE  $/;"	C	type:tokens
+RSI	assem.ml	/^    |RSI $/;"	C	type:reg
+RSP	assem.ml	/^    |RSP $/;"	C	type:reg
+Return	intr.ml	/^type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value $/;"	C	type:reg_type
+SEMICOLON	lexer.ml	/^    | SEMICOLON | NEWLINE$/;"	C	type:tokens
+SI	assem.ml	/^    |SI $/;"	C	type:reg
+SIL	assem.ml	/^    |SIL $/;"	C	type:reg
+SLASH	lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+SP	assem.ml	/^    |SP $/;"	C	type:reg
+SPL	assem.ml	/^    |SPL $/;"	C	type:reg
+STRING	lexer.ml	/^    | FLOAT of float | INTEGER of int | STRING of string | IDEN of string | CHAR of char $/;"	C	type:tokens
+SUB	parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	C	type:op_type
+StackMap	assem.ml	/^module StackMap = Map.Make(String)$/;"	M
+Stack_Pos	assem.ml	/^type stack_iden = Table of  stack_iden StackMap.t | Stack_Pos of int $/;"	C	type:stack_iden
+Str	lexer.ml	/^exception Str of string $/;"	e
+String	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	C	type:var_type
+String_Val	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	C	type:expr_value
+TIMES	lexer.ml	/^    | PLUS | MINUS | SLASH | TIMES$/;"	C	type:tokens
+Table	assem.ml	/^type stack_iden = Table of  stack_iden StackMap.t | Stack_Pos of int $/;"	C	type:stack_iden
+Table	parser.ml	/^                    |Table of symbol_entry VarMap.t$/;"	C	type:symbol_entry
+Temp	intr.ml	/^type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value $/;"	C	type:reg_type
+Type	parser.ml	/^                    |Type of var_type list$/;"	C	type:symbol_entry
+VALUE	parser.ml	/^            | VALUE of expr_value $/;"	C	type:expr
+VarMap	parser.ml	/^module VarMap = Map.Make(String)$/;"	M
+Variable	parser.ml	/^                    |Variable of var_type$/;"	C	type:symbol_entry
+X64_ADD	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	C	type:assem_bin_insr
+X64_BIN	assem.ml	/^type x64_ops = |X64_BIN of  assem_bin_insr * reg * reg$/;"	C	type:x64_ops
+X64_DIV	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	C	type:assem_bin_insr
+X64_Jump	assem.ml	/^               |X64_Jump of jump_type * string$/;"	C	type:x64_ops
+X64_Label	assem.ml	/^               |X64_Label of string$/;"	C	type:x64_ops
+X64_MUL	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	C	type:assem_bin_insr
+X64_SUB	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	C	type:assem_bin_insr
+X64_UN	assem.ml	/^               |X64_UN of assem_bin_insr * reg $/;"	C	type:x64_ops
+args	intr.ml	/^        let args = List.mapi $/;"	v
+assem_bin_insr	assem.ml	/^type assem_bin_insr = MOV |  X64_SUB  | X64_ADD  | X64_MUL | X64_DIV$/;"	t
+assem_un_insr	assem.ml	/^type  assem_un_insr =  PUSH | POP$/;"	t
+decl_arg_types	parser.ml	/^            let decl_arg_types,return = get_func_call iden sym_tbl in$/;"	v
+expr	parser.ml	/^type expr = OP of expr * op_type * expr $/;"	t
+expr_value	parser.ml	/^type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of floa/;"	t
+extract_lexems	lexer.ml	/^let extract_lexems str_list = List.map typify str_list $/;"	f
+get_next_lex	lexer.ml	/^let get_next_lex ls  =$/;"	f
+get_raw_lexes	lexer.ml	/^let get_raw_lexes char_list = $/;"	f
+intr	intr.ml	/^type intr = |Load of reg_type * reg_type $/;"	t
+intr_to_x64	assem.ml	/^let intr_to_x64 insts = $/;"	f
+jump_type	assem.ml	/^type jump_type = JMP $/;"	t
+last_reg	intr.ml	/^let rec last_reg stmts = match stmts with$/;"	f
+match_reg	lexer.ml	/^let match_reg reg str= Str.string_match (Str.regexp reg)  str 0 $/;"	f
+new_reg	assem.ml	/^                let new_reg = (last_reg-(sizeof value)) in$/;"	v
+op_type	parser.ml	/^type op_type = ADD | DIV | SUB | MULT$/;"	t
+parser_f	parser.ml	/^let parser_f terminals_list = $/;"	f
+print_exp	parser.ml	/^let print_exp  exp = match exp with  $/;"	f
+print_intrs	intr.ml	/^let print_intrs file insts = $/;"	f
+print_jmp	assem.ml	/^let print_jmp jmp = match jmp with$/;"	f
+print_token	lexer.ml	/^let print_token x =  Printf.printf "%s;\\n" (stringify x);()$/;"	f
+print_x64	assem.ml	/^let rec print_x64 file ls= match ls with$/;"	f
+read_j_file	lexer.ml	/^let  read_j_file  file = $/;"	f
+reg	assem.ml	/^type reg =  $/;"	t
+reg_type	intr.ml	/^type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value $/;"	t
+sizeof	parser.ml	/^let sizeof value = match value with  $/;"	v
+stack_iden	assem.ml	/^type stack_iden = Table of  stack_iden StackMap.t | Stack_Pos of int $/;"	t
+stmt	parser.ml	/^type stmt = FUNC of string * string list * stmt list * expr$/;"	t
+stmt_to_intr	intr.ml	/^let stmt_to_intr stmts =$/;"	f
+stringify	lexer.ml	/^let stringify token = $/;"	f
+stringify_op	parser.ml	/^let stringify_op v = (match v with $/;"	f
+stringify_reg	assem.ml	/^let stringify_reg reg = match reg with$/;"	f
+stringify_value	parser.ml	/^let stringify_value value= match value with $/;"	v
+stringify_x64_op	assem.ml	/^let stringify_x64_op op = match op with$/;"	f
+symbol_entry	parser.ml	/^type symbol_entry = $/;"	t
+table_stack	assem.ml	/^                let table_stack,new_reg = stack_init_r values last_reg (Table tbl) in $/;"	v
+token_lit_to_value	parser.ml	/^let token_lit_to_value token = match token with $/;"	f
+tokens	lexer.ml	/^type tokens = $/;"	t
+typify	lexer.ml	/^let typify str = $/;"	f
+var_type	parser.ml	/^type var_type = |Iden of string | Int | String | Float | Char  | Any$/;"	t
+x64_ops	assem.ml	/^type x64_ops = |X64_BIN of  assem_bin_insr * reg * reg$/;"	t

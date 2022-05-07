@@ -1,8 +1,7 @@
 open Parser
 open Printf
-open Lexer
 
-type reg_type = Temp of int | Arg of int  | Return of int | Const of tokens
+type reg_type = Temp of int | Arg of int  | Return of int | Const of expr_value 
 
 type intr = |Load of reg_type * reg_type 
             |Bin_Insr of reg_type * reg_type * op_type * reg_type  
@@ -59,16 +58,21 @@ let stmt_to_intr stmts =
     match (stmts) with 
     |Parser.ASSIGN(k , v) :: xs -> 
         let new_output = match (expr_to_intr v 0) with  
-            |Bin_Insr(Temp(i),_,_,_)::_ as all ->
-                let value = (Load(Const(IDEN(k)),Temp(i))::all) in
+            |Bin_Insr(Temp(_),l,op,r)::xs ->
+                let value = ((Bin_Insr(Const(Iden_Val(k)),l,op,r))::xs) in
                 List.rev (value) @ output
+            
+            |Load(Temp(i),_)::_ as all ->
+                    List.rev all @ 
+                    Load(Const(Iden_Val(k)),Temp(i)) ::
+                    output
             |all ->  all @ output 
         in 
         stmt_to_intr_r xs new_output 
             
     |FUNC(name, args , stmts,return)::xs ->
         let args = List.mapi 
-            (fun i v -> Load(Const(IDEN(v)), Arg(i)))
+            (fun i v -> Load(Const(Iden_Val(v)), Arg(i)))
             args 
         in
 
@@ -85,10 +89,10 @@ let stmt_to_intr stmts =
         let func_label = Label(name,all_intrs)
         in
         stmt_to_intr_r xs (func_label::output)
-
+    
     |[] -> output
     in
-     (stmt_to_intr_r  stmts [])
+    (stmt_to_intr_r  stmts [])
 
 
 let print_intrs file insts = 
@@ -96,7 +100,7 @@ let print_intrs file insts =
     | Temp(x)  -> sprintf "t%i"  x 
     | Arg (x)  -> sprintf "a%i"  x
     | Return(x)-> sprintf "v%i"  x
-    | Const(x) -> sprintf "%s"  (stringify x)
+    | Const(x) -> sprintf "%s"  (stringify_value x)
     in
     let rec print_intr inst = match inst with 
         |Bin_Insr(res,l,op,r)-> 

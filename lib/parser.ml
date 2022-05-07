@@ -4,10 +4,11 @@ open Printf
 exception OP of string
 
 type op_type = ADD | DIV | SUB | MULT
+type expr_value = Iden_Val of string | Int_Val of int | String_Val of string | Float_Val of float | Char_Val  of char 
 
 type expr = OP of expr * op_type * expr 
             | FUNC_CALL of string * expr list
-            | VALUE of tokens 
+            | VALUE of expr_value 
             | ERROR
 
 module VarMap = Map.Make(String)
@@ -22,8 +23,20 @@ type symbol_entry =
 
 type stmt = FUNC of string * string list * stmt list * expr
             | ASSIGN of string * expr
+let sizeof value = match value with  
+| Int_Val(_)  -> 4
+| Float_Val(_) -> 4 
+| Char_Val(_)  -> 1
+| String_Val(_) -> raise (OP "can't add string")
+| Iden_Val(_) -> raise (OP "can't add iden") 
 
-
+let stringify_value value= match value with 
+    Iden_Val (x)-> sprintf "%s" x
+    | Int_Val(x)-> sprintf "%i" x
+    | String_Val (x)-> sprintf "%s" x
+    | Float_Val (x)-> sprintf "%f" x
+    | Char_Val  (x)-> sprintf "%c" x
+ 
 let print_exp  exp = match exp with  
             |OP(_,v,_)  ->
                     (match v with 
@@ -33,8 +46,15 @@ let print_exp  exp = match exp with
                         |MULT  -> printf "mult";
                     );
             | FUNC_CALL(_) -> printf "func\n" ;
-            | VALUE (value)-> printf "Value(%s)\n" (stringify value);
+            | VALUE (value)-> printf "Value(%s)\n" (stringify_value value);
             | ERROR -> printf "error\n";;
+let token_lit_to_value token = match token with 
+            |IDEN(x)->  Iden_Val (x)
+            |INTEGER(x)->  Int_Val(x)
+            |STRING(x)->String_Val(x)
+            |FLOAT(x)-> Float_Val(x)
+            |CHAR(x)-> Char_Val(x)
+            |_-> raise (OP "wrong token")
 
 let parser_f terminals_list = 
     let rec expression terms = 
@@ -52,7 +72,8 @@ let parser_f terminals_list =
                 let arg_list,rest = arguments xs in
                 FUNC_CALL(v,arg_list),rest
         |INTEGER(_) |FLOAT(_)|STRING(_)|CHAR(_)|IDEN(_) as v::xs ->
-                (VALUE v),xs
+
+                (VALUE (token_lit_to_value v)),xs
         |LPARAM::xs -> 
                  (
                  match (expression xs) with 
@@ -100,7 +121,6 @@ let parser_f terminals_list =
 
                         output,xs
         in
-
         let starting_term,starting_list = (match terms with
         |PLUS::xs -> term xs 
         |MINUS::xs -> term xs 
@@ -160,12 +180,11 @@ let parser_f terminals_list =
         |VALUE(v) ->    
             (
             match v with 
-            |INTEGER(_) as value -> VALUE(value),Int  
-            |FLOAT(_)   as value -> VALUE(value),Float
-            |STRING(_)  as value -> VALUE(value),String
-            |CHAR(_)    as value -> VALUE(value),Char
-            |IDEN(i)     -> VALUE(IDEN(i)),(get_symbol i sym_tbl)
-            |_->raise (OP "wrong value")
+            |Int_Val(_) as value -> VALUE(value),Int  
+            |Float_Val(_)   as value -> VALUE(value),Float
+            |String_Val(_)  as value -> VALUE(value),String
+            |Char_Val(_)    as value -> VALUE(value),Char
+            |Iden_Val(i)     -> (VALUE(Iden_Val(i))),(get_symbol i sym_tbl)
             )
         |FUNC_CALL(iden,ls)->
             let decl_arg_types,return = get_func_call iden sym_tbl in
