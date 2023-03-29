@@ -87,7 +87,7 @@ module StackMap = Map.Make(String)
 type stack_iden = Table of  stack_iden StackMap.t | Stack_Pos of int 
 
 
-let intr_to_x64 insts = 
+let intr_to_x64 insts sym_table = 
     (*
     let int_to_reg i =  match i with
         |1->EAX 
@@ -135,7 +135,7 @@ let intr_to_x64 insts =
     let stack_init input_list = 
         let rec stack_init_r input last_reg output = match input,output with
             |(Load(Const(Iden_Val(var)),Const(value))::xs),Table(tbl) ->
-                let new_reg = (last_reg-(sizeof value)) in
+                let new_reg = (last_reg-(sizeof value sym_table )) in
                 let appened_map = StackMap.add var (Stack_Pos(new_reg)) tbl in
                 stack_init_r xs new_reg (Table(appened_map) )
 

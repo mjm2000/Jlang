@@ -6,7 +6,7 @@
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  02/09/2022 01:37:14 PM
+ *        Created:  02/13/2022 02:54:21 PM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,11 +16,13 @@
  * =====================================================================================
  */
 #include <stdlib.h>
+#include <stdio.h>
 
 int main(){
-    int i = 10 + 30 +40;
-    i += 60;
-    int j = 11;
-    
+    char i = '1';
+    i += '2';
+    i += '3';
+    printf("%c",i);
+
     return 1;
 }

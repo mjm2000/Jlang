@@ -23,12 +23,29 @@ type symbol_entry =
 
 type stmt = FUNC of string * string list * stmt list * expr
             | ASSIGN of string * expr
-let sizeof value = match value with  
+
+let rec sizeof value sym_tbl = match value with  
 | Int_Val(_)  -> 4
 | Float_Val(_) -> 4 
 | Char_Val(_)  -> 1
-| String_Val(_) -> raise (OP "can't add string")
-| Iden_Val(_) -> raise (OP "can't add iden") 
+| String_Val(s) -> String.length s
+| Iden_Val(iden) ->
+    let rec iden_size id = 
+    match (VarMap.find id sym_tbl) with 
+    |Variable(v) -> (match v with 
+        |Iden(i) -> iden_size i 
+        |Int -> 4 
+        |String -> 100
+        |Float -> 8
+        |Char -> 1 
+        |Any -> 8
+        )
+    |Type(ls) -> List.fold_left (fun  total x -> total + (iden_size x)) ls 0 
+    |_ -> raise (OP "value")
+    in
+    iden_size iden 
+
+
 
 let stringify_value value= match value with 
     Iden_Val (x)-> sprintf "%s" x
